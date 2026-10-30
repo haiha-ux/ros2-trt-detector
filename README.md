@@ -1,6 +1,6 @@
 # ros2-trt-detector
 
-A ROS 2 (Jazzy) node that runs a TensorRT FP16 YOLO11n detector on a camera image topic and publishes `vision_msgs/Detection2DArray` (plus an optional annotated image). The repo includes a test video publisher and a latency benchmark measured on the real ROS 2 message path.
+A ROS 2 (Jazzy) node that runs a TensorRT FP16 YOLO11n detector on a camera image topic and publishes `vision_msgs/Detection2DArray`, plus an optional annotated image. The repo also has a test video publisher and a latency benchmark measured on the real ROS 2 message path.
 
 ![MOT17 pedestrian clip, boxes from /detections, heads blurred](docs/preview.gif)
 
@@ -44,7 +44,7 @@ Launch arguments: `engine_path`, `image_topic`, `publish_annotated_image`, `vide
 
 ## Results
 
-Setup: **shared NVIDIA GB10 (aarch64 desktop-class GPU), not a Jetson.** The GPU was already about 82-85% utilised by other jobs when each run started (`gpu_util_before_pct` in `results/bench.json`), so absolute numbers are noisy and only meaningful relative to each other. TensorRT 10.16, ROS 2 Jazzy, Fast DDS with shared memory. Source: MOT17-04 (pedestrians, CC BY-NC-SA 3.0), resized to 1280x720 `bgr8`, published at 30 Hz. YOLO11n FP16, person class, conf 0.25. 60 s per point after an 8 s warm-up, one run per point (no repeats; treat differences of a few ms as noise).
+Setup: the GPU is a shared NVIDIA GB10 (aarch64 desktop-class GPU), not a Jetson. It was already about 82-85% utilised by other jobs when each run started (`gpu_util_before_pct` in `results/bench.json`), so absolute numbers are noisy and only meaningful relative to each other. The stack is TensorRT 10.16 and ROS 2 Jazzy with Fast DDS shared memory. The source is MOT17-04 (pedestrians, CC BY-NC-SA 3.0), resized to 1280x720 `bgr8` and published at 30 Hz. The model is YOLO11n FP16, person class, conf 0.25. Each point runs 60 s after an 8 s warm-up, once, with no repeats, so treat differences of a few ms as noise.
 
 Latency is in ms, median / p95. "Stamp to receive" runs from the image header stamp (set by the publisher just before publishing) to the moment a separate consumer process receives the detections, so it includes DDS transfer of a 2.7 MB image and of the result. It does not include camera exposure or a real driver.
 
@@ -89,9 +89,11 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest -q
 
 To use your own camera, point `image_topic` at it and drop the `video:=` argument.
 
-## Deploying on a Jetson Orin (approach, not measured)
+## Deploying on a Jetson Orin
 
-I have not run this on a Jetson. The intended approach:
+This is an approach, not measured.
+
+I have not run this on a Jetson. This is the approach I would take:
 
 1. Flash JetPack 6.x (Ubuntu 22.04, TensorRT 10 and CUDA included) and use ROS 2 Humble, or run the Jazzy container of your choice; the node uses only `rclpy`, `sensor_msgs` and `vision_msgs`.
 2. Install a PyTorch build for JetPack (NVIDIA's Jetson wheels) and `torchvision`; the node uses torch only for GPU tensors, resize and NMS.
