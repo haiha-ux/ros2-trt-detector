@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>trt_detector</name>
+  <version>0.1.0</version>
+  <description>TensorRT YOLO object detector node publishing vision_msgs/Detection2DArray</description>
+  <maintainer email="haiha-ux@users.noreply.github.com">Ha Phan Thanh Hai</maintainer>
+  <license>MIT</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>vision_msgs</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

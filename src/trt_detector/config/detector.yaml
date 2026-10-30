@@ -1,0 +1,12 @@
+trt_detector:
+  ros__parameters:
+    engine_path: engines/yolo11n_fp16_640.plan   # relative to the working directory
+    image_topic: /image_raw
+    score_threshold: 0.25
+    nms_iou_threshold: 0.7
+    classes: ["person"]          # COCO names; empty list = all 80 classes
+    max_detections: 100
+    publish_annotated_image: false
+    qos_depth: 1                 # best-effort, keep-last; old frames are dropped when inference is slower than the camera
+    gpu_memory_fraction: 0.3
+    timing_csv: ""               # set to a path to log per-frame stage times

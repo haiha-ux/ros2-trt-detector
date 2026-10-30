@@ -1,0 +1,110 @@
+[
+  {
+    "input_size": 640,
+    "source": "1280x720",
+    "input_rate_hz": 30.0,
+    "publisher_rate_hz": 29.96062465765875,
+    "detection_rate_hz": 30.001233560606952,
+    "frames": 1801,
+    "stamp_to_receive_ms": {
+      "median": 14.085609,
+      "p95": 20.99273,
+      "mean": 14.391335985563575
+    },
+    "stages_ms": {
+      "convert_ms": {
+        "median": 0.037,
+        "p95": 0.09504999999999995,
+        "mean": 0.04700944444444446
+      },
+      "preprocess_ms": {
+        "median": 1.7325,
+        "p95": 3.3193499999999996,
+        "mean": 1.8368266666666666
+      },
+      "infer_ms": {
+        "median": 2.366,
+        "p95": 3.7012,
+        "mean": 2.3786811111111112
+      },
+      "nms_ms": {
+        "median": 3.8445,
+        "p95": 6.15025,
+        "mean": 3.9035022222222224
+      },
+      "publish_ms": {
+        "median": 1.073,
+        "p95": 2.0622,
+        "mean": 1.1681027777777777
+      },
+      "total_ms": {
+        "median": 9.332,
+        "p95": 14.1501,
+        "mean": 9.403697222222222
+      },
+      "stamp_to_publish_ms": {
+        "median": 12.218499999999999,
+        "p95": 18.8711,
+        "mean": 12.611752222222224
+      }
+    },
+    "mean_detections_per_frame": 17.121666666666666,
+    "cpu_detector_pct": 35.0,
+    "cpu_publisher_pct": 79.8,
+    "gpu_util_before_pct": 82.0
+  },
+  {
+    "input_size": 1280,
+    "source": "1280x720",
+    "input_rate_hz": 30.0,
+    "publisher_rate_hz": 29.967326662226156,
+    "detection_rate_hz": 30.016974710970636,
+    "frames": 1802,
+    "stamp_to_receive_ms": {
+      "median": 19.385703,
+      "p95": 27.28215804999999,
+      "mean": 19.943452320754716
+    },
+    "stages_ms": {
+      "convert_ms": {
+        "median": 0.039,
+        "p95": 0.097,
+        "mean": 0.04815602443087174
+      },
+      "preprocess_ms": {
+        "median": 2.143,
+        "p95": 3.641,
+        "mean": 2.241210438645197
+      },
+      "infer_ms": {
+        "median": 5.641,
+        "p95": 8.035,
+        "mean": 5.7748356468628534
+      },
+      "nms_ms": {
+        "median": 3.972,
+        "p95": 6.201,
+        "mean": 4.128600777345918
+      },
+      "publish_ms": {
+        "median": 1.829,
+        "p95": 2.997,
+        "mean": 1.8805613548028872
+      },
+      "total_ms": {
+        "median": 13.842,
+        "p95": 19.698,
+        "mean": 14.141297057190451
+      },
+      "stamp_to_publish_ms": {
+        "median": 16.885,
+        "p95": 24.396,
+        "mean": 17.404293170460857
+      }
+    },
+    "mean_detections_per_frame": 35.33870072182121,
+    "cpu_detector_pct": 49.3,
+    "cpu_publisher_pct": 81.3,
+    "gpu_util_before_pct": 85.0
+  }
+]
